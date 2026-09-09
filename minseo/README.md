@@ -5,13 +5,22 @@
 
 ## 실행
 
+`minseo/🔴 서버 켜기.command` 를 **더블클릭**한다. 터미널이 열리면서 서버가 켜지고
+1초 뒤 브라우저가 자동으로 열린다. 끄려면 그 터미널 창에서 `Control + C` 를 누르거나 창을 닫는다.
+
+- 스크립트는 자기 위치를 기준으로 한 칸 위(저장소 루트)에서 서버를 띄운다. 폴더를 옮겨도 동작한다.
+- 이미 8000 번 포트가 쓰이고 있으면 서버를 또 띄우지 않고 브라우저만 연다.
+- 더블클릭이 안 되고 텍스트 편집기가 열리면 실행 권한이 없는 것이다. `chmod +x "minseo/🔴 서버 켜기.command"`.
+
+터미널에서 직접 하려면 저장소 루트에서:
+
 ```bash
-# 저장소 루트에서
 python3 -m http.server 8000
 ```
 
-브라우저에서 `http://localhost:8000/minseo/` 를 연다.
-`index.html` 을 더블클릭해서 `file://` 로 열면 마이크와 AudioWorklet이 동작하지 않는다.
+어느 쪽이든 `http://localhost:8000/minseo/` 를 연다.
+`index.html` 을 더블클릭해서 `file://` 로 열면 마이크와 AudioWorklet 이 동작하지 않는다.
+로컬 서버가 필요한 이유가 이것이다.
 
 키는 [Google AI Studio](https://aistudio.google.com/api-keys) 에서 발급받는다.
 넣는 방법이 두 가지이고 **둘 다 소스 파일을 건드리지 않는다.**
@@ -44,6 +53,7 @@ cp key.example.js key.js
 | `pcm-recorder.js` | AudioWorklet. 마이크를 16kHz 16-bit PCM 64ms 조각으로 잘라 넘김 |
 | `key.example.js` | 키 파일 템플릿. `key.js` 로 복사해서 쓴다 |
 | `key.js` | **커밋 안 됨.** 여기에만 키가 들어간다 |
+| `🔴 서버 켜기.command` | 더블클릭하면 로컬 서버를 켜고 브라우저를 연다 |
 
 ## 동작 흐름
 
